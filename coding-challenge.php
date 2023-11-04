@@ -1,11 +1,14 @@
 <?php
 function rotLeft($a, $d) {
     $n = count($a);
-    $rotated = array_fill(0, $n, 0);  // Create a new array to store the rotated elements
+    $rotated = [];  // Create a new array to store the rotated elements
+    $newd = $d % $n;
 
-    for ($i = 0; $i < $n; $i++) {
-        $newIndex = ($i - $d + $n) % $n;  // Calculate the new index after rotation
-        $rotated[$newIndex] = $a[$i];
+    for ($i = $newd; $i < $n; $i++) {
+        array_push($rotated, $a[$i]);
+    }
+    for ($i = 0; $i < $newd; $i++) {
+        array_push($rotated, $a[$i]);
     }
 
     return $rotated;
